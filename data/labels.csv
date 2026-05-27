@@ -1,0 +1,117 @@
+image_path,label,split
+data/raw/squat/1109-Barbell-Back-Squat-GettyImages-614107160.webp,good_squat,train
+data/raw/squat/18_Benefits_of_Squats_for_Overall_Fitness_Strength_Gains.webp,good_squat,train
+data/raw/squat/20171208_WRN_6320-768x511.jpg,good_squat,train
+data/raw/squat/3f282a64-3314-4eeb-82ff-14226507c276.avif,good_squat,train
+data/raw/squat/463029223_HighRes-56a8f4025f9b58b7d0f6acd7.jpg,good_squat,train
+data/raw/squat/5-expert-approved-squat-variations-to-try.avif,good_squat,train
+data/raw/squat/A_woman_performing_squats_with_a_heavy_barbell_across_the_shoulders.webp,good_squat,train
+data/raw/squat/Barbell+Squat.webp,good_squat,train
+data/raw/squat/Barbell-squat.webp,good_squat,train
+data/raw/squat/Essential-CrossFit-Air-Squat-768x511.jpg,good_squat,train
+data/raw/squat/GRT-female-squat-gym-1200x628-facebook-732x549.avif,good_squat,train
+data/raw/squat/Goblet_Squat.webp,good_squat,train
+data/raw/squat/How-to-Squat-Like-a-Pro.jpg,good_squat,train
+data/raw/squat/How_to_do_a_Barbell_Squat_480x480.webp,good_squat,train
+data/raw/squat/IMG_0645-820x1024.jpg,good_squat,train
+data/raw/squat/LoveYourBody-AlliSquatting-640x425-1.jpg,good_squat,train
+data/raw/squat/Master the move - goblet squat.webp,good_squat,train
+data/raw/squat/Roxie+Jones+in+a+squat.webp,good_squat,train
+data/raw/squat/SQUAT-GOODFORM-19298-superJumbo-v2.jpg,good_squat,train
+data/raw/squat/SQUAT-GOODFORM_TOPPER-mediumSquareAt3X-v3.jpg,good_squat,train
+data/raw/squat/STUDIO-LFT-Classes-1024x576.jpg,good_squat,train
+data/raw/squat/Squat+(Female).webp,good_squat,train
+data/raw/squat/Squat-Therapy-GettyImages-1285245435-39983054bd9e41109c7e80f2a8d2a240.jpg,good_squat,train
+data/raw/squat/Squat-with-front-raise-using-Mirafit-Rubber-Dumbbells-1024x683.webp,good_squat,train
+data/raw/squat/Squat_annotated-35163d5f572948bd892f4e4628571f41.jpg,good_squat,train
+data/raw/squat/Squats-101-How-To-Do-A-Squat-Properly_jpg.webp,good_squat,train
+data/raw/squat/TELEMMGLPICT000386784517_17460099551340_trans_NvBQzQNjv4Bqb5xeOjKRJMlh3_fJmJwZBZuvXITx4DO1em68mAnDbeE.webp,good_squat,train
+data/raw/squat/Woman-doing-deep-squat-on-grey-background-and-workout-clothes.png,good_squat,train
+data/raw/squat/Woman_performing_a_squat_with_a_kettlebell.webp,good_squat,train
+data/raw/squat/a-girl-is-training-her-legs-in-the-gym.webp,good_squat,train
+data/raw/squat/bgtmsq-67fe604f8362b.avif,good_squat,train
+data/raw/squat/biomechanics-of-squat-1.jpg,good_squat,train
+data/raw/squat/d0fc67655529-woman-doing-squats-in-her-bedroom.webp,good_squat,train
+data/raw/squat/deadlift squate rack exercise.webp,good_squat,train
+data/raw/squat/do-you-need-to-squat-wide.jpg,good_squat,train
+data/raw/squat/download.webp,good_squat,train
+data/raw/squat/ezgif.com-resize-94-e1752516351745.webp,good_squat,train
+data/raw/squat/fit-woman-training-with-weights-royalty-free-image-1721828689.avif,good_squat,train
+data/raw/squat/gettyimages-879709092-2000-e78ec9ebc028449da2601c5ca03cf3a9.jpg,good_squat,train
+data/raw/squat/guy-squatting_fe.webp,good_squat,train
+data/raw/squat/how-to-do-squats-properly-.jpg,good_squat,train
+data/raw/squat/how-to-squat-1620118345.avif,good_squat,train
+data/raw/squat/how-to-squats-1-3d97915d64534c419262227f56174727.jpg,good_squat,train
+data/raw/squat/im-889147.avif,good_squat,train
+data/raw/squat/image (1).avif,good_squat,train
+data/raw/squat/image.avif,good_squat,val
+data/raw/squat/images (1).jpeg,good_squat,val
+data/raw/squat/images.jpeg,good_squat,val
+data/raw/squat/images2.jpeg,good_squat,val
+data/raw/squat/increase%20your%20squat.webp,good_squat,val
+data/raw/squat/man-training-with-weights-royalty-free-image-1718637105.avif,good_squat,val
+data/raw/squat/person-doing-squat-at-gym.webp,good_squat,val
+data/raw/squat/runner-doing-a-squat.jpg,good_squat,val
+data/raw/squat/sergio-pedemonte-pE5oWO__uDI-unsplash-1.jpg,good_squat,val
+data/raw/squat/shutterstock_641141851.jpg,good_squat,test
+data/raw/squat/squat exercise gettyimages 682x408 493658710.webp,good_squat,test
+data/raw/squat/squat%20fitness%20exercise.webp,good_squat,test
+data/raw/squat/squat-gym-workout-sundried.webp,good_squat,test
+data/raw/squat/squat-infographic-d23c1dafcaef4c688ee7d6f828c8dd1b.png,good_squat,test
+data/raw/squat/squats-67ead59a311f9.avif,good_squat,test
+data/raw/squat/the-front-squat-hand-position-basics-optimize-form-preview.webp,good_squat,test
+data/raw/squat/woman_squatting.webp,good_squat,test
+data/raw/squat/zercher-squat.jpg,good_squat,test
+data/raw/squat_bad/14.webp,needs_correction,train
+data/raw/squat_bad/2loA3eP1RrSVgblZIgQ-gg.webp,needs_correction,train
+data/raw/squat_bad/4-SQUAT-MISTAKES-AND-HOW-TO-FIX-THEM_-SQUAT-DOS-AND-DONTS-YouTube-5.png,needs_correction,train
+data/raw/squat_bad/88.gif,needs_correction,train
+data/raw/squat_bad/Bad-Squat-170203-5894f2c72eb80-300x222.jpg,needs_correction,train
+data/raw/squat_bad/Butt-Wink-Reasons-scaled.webp,needs_correction,train
+data/raw/squat_bad/Dumbbellrowstart-99e487db15f548eea0b79c3a8d48ce92.jpg,needs_correction,train
+data/raw/squat_bad/HOW+TO+SQUAT+WITH+PROPER+FORM+AND+TECHNIQUE.webp,needs_correction,train
+data/raw/squat_bad/SSBlog_BentOverRow_700x525.jpg,needs_correction,train
+data/raw/squat_bad/Screen-Shot-2020-02-15-at-2.31.56-PM-min.webp,needs_correction,train
+data/raw/squat_bad/Snatch-Bent-Over-Row-with-Mirafit-Olympic-Barbell.jpg,needs_correction,train
+data/raw/squat_bad/b2bece_c57ff3fd07cd4371ab4c54b518121fce~mv2.png,needs_correction,train
+data/raw/squat_bad/b3525aec0564cf0021cdb74e94275a5fb085a1e3.jpg,needs_correction,train
+data/raw/squat_bad/bad-form-squats-male-exercise.jpg,needs_correction,train
+data/raw/squat_bad/bad-overhead-squat.webp,needs_correction,train
+data/raw/squat_bad/bedb34c8-897f-46da-8056-f450d87b40f9.jpg,needs_correction,train
+data/raw/squat_bad/bent-over-barbell-row.gif,needs_correction,train
+data/raw/squat_bad/bent-over-db-rows.jpg,needs_correction,train
+data/raw/squat_bad/bent-over-row-67e6ac9738aa3.avif,needs_correction,train
+data/raw/squat_bad/bent-over-row.webp,needs_correction,train
+data/raw/squat_bad/box-squat-2.webp,needs_correction,train
+data/raw/squat_bad/buttwink1.png,needs_correction,train
+data/raw/squat_bad/chronically-bad-squat-form-switched-to-low-bar-v0-bXY1ZDNhbHZpbzdjMbi1Rf8i9ikeoR4cmocqtwXZ9AJoGhNhs3ulkATpq2Zf.webp,needs_correction,train
+data/raw/squat_bad/d1e2a2f93281a8197bceea568b7c98edf7c80747.jpg,needs_correction,train
+data/raw/squat_bad/download (1).jpeg,needs_correction,train
+data/raw/squat_bad/download (2).jpeg,needs_correction,train
+data/raw/squat_bad/download (3).jpeg,needs_correction,train
+data/raw/squat_bad/female-workout-bent-over-row-732-549-feature-thumb-732x549.avif,needs_correction,train
+data/raw/squat_bad/form.png,needs_correction,train
+data/raw/squat_bad/hq720.jpg,needs_correction,train
+data/raw/squat_bad/hunched-over.jpg,needs_correction,train
+data/raw/squat_bad/image_iphone.jpg,needs_correction,train
+data/raw/squat_bad/images (1).jpeg,needs_correction,train
+data/raw/squat_bad/images (2).jpeg,needs_correction,train
+data/raw/squat_bad/images (3).jpeg,needs_correction,train
+data/raw/squat_bad/images (4).jpeg,needs_correction,train
+data/raw/squat_bad/images (5).jpeg,needs_correction,train
+data/raw/squat_bad/images (6).jpeg,needs_correction,train
+data/raw/squat_bad/images (7).jpeg,needs_correction,val
+data/raw/squat_bad/images (8).jpeg,needs_correction,val
+data/raw/squat_bad/images.jpeg,needs_correction,val
+data/raw/squat_bad/images2.jpeg,needs_correction,val
+data/raw/squat_bad/joshua-simpson-kettlebell-vs-dumbbell-kb-bent-over-alternating-row-219-1636665510.avif,needs_correction,val
+data/raw/squat_bad/knee-cave.webp,needs_correction,val
+data/raw/squat_bad/knees-over-toes-exercises.jpg,needs_correction,val
+data/raw/squat_bad/man-with-knee-pain-at-the-gym_thumb-detail.png,needs_correction,val
+data/raw/squat_bad/maxresdefault.jpg,needs_correction,test
+data/raw/squat_bad/roundedback.jpg,needs_correction,test
+data/raw/squat_bad/snatch.webp,needs_correction,test
+data/raw/squat_bad/squat-form-is-very-poor-and-would-appreciate-advice-v0-NXAwZm9qbHh4YjNmMTlKaUONMaKWAT-d0MOYIoUVRiMP6GN3blhTosGZuk0V.webp,needs_correction,test
+data/raw/squat_bad/squat-leaning-forward.jpg,needs_correction,test
+data/raw/squat_bad/squat-lower-back-pain.jpg,needs_correction,test
+data/raw/squat_bad/unnamed-1.webp,needs_correction,test

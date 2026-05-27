@@ -1,0 +1,15 @@
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.venv/
+venv/
+.env
+.DS_Store
+*.ipynb_checkpoints
+# Keep trained model artifacts in git for deployment.
+# They are small and required by the Streamlit app at runtime.
+data/raw/*
+!data/raw/.gitkeep
+data/processed/*
+!data/processed/.gitkeep

@@ -1,0 +1,78 @@
+{
+  "clean": {
+    "baseline": {
+      "accuracy": 0.8125,
+      "macro_f1": 0.7922077922077921,
+      "confusion_matrix": [
+        [
+          9,
+          0
+        ],
+        [
+          3,
+          4
+        ]
+      ],
+      "classes": [
+        "good_squat",
+        "needs_correction"
+      ]
+    },
+    "robust": {
+      "accuracy": 0.875,
+      "macro_f1": 0.8666666666666667,
+      "confusion_matrix": [
+        [
+          9,
+          0
+        ],
+        [
+          2,
+          5
+        ]
+      ],
+      "classes": [
+        "good_squat",
+        "needs_correction"
+      ]
+    }
+  },
+  "stress": {
+    "baseline": {
+      "accuracy": 0.8125,
+      "macro_f1": 0.7922077922077921,
+      "confusion_matrix": [
+        [
+          9,
+          0
+        ],
+        [
+          3,
+          4
+        ]
+      ],
+      "classes": [
+        "good_squat",
+        "needs_correction"
+      ]
+    },
+    "robust": {
+      "accuracy": 0.875,
+      "macro_f1": 0.8666666666666667,
+      "confusion_matrix": [
+        [
+          9,
+          0
+        ],
+        [
+          2,
+          5
+        ]
+      ],
+      "classes": [
+        "good_squat",
+        "needs_correction"
+      ]
+    }
+  }
+}
