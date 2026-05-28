@@ -90,8 +90,14 @@ def split_labels_df(labels_csv: str):
     return train, val, test
 
 
-def build_model(num_classes: int = 2):
-    model = models.resnet18(weights=models.ResNet18_Weights.DEFAULT)
+def build_model(num_classes: int = 2, arch: str = "resnet18"):
+    arch = arch.lower()
+    if arch == "resnet18":
+        model = models.resnet18(weights=models.ResNet18_Weights.DEFAULT)
+    elif arch == "resnet50":
+        model = models.resnet50(weights=models.ResNet50_Weights.DEFAULT)
+    else:
+        raise ValueError(f"Unsupported architecture: {arch}")
     in_features = model.fc.in_features
     model.fc = nn.Linear(in_features, num_classes)
     return model
@@ -157,7 +163,15 @@ def evaluate_model(model, loader, device):
     }
 
 
-def train_transfer_model(labels_csv: str, robust: bool, epochs_head: int, epochs_ft: int, batch_size: int, seed: int = 42):
+def train_transfer_model(
+    labels_csv: str,
+    robust: bool,
+    epochs_head: int,
+    epochs_ft: int,
+    batch_size: int,
+    seed: int = 42,
+    arch: str = "resnet18",
+):
     torch.manual_seed(seed)
     np.random.seed(seed)
 
@@ -170,7 +184,7 @@ def train_transfer_model(labels_csv: str, robust: bool, epochs_head: int, epochs
     test_loader = DataLoader(SquatImageDataset(test_df, eval_tf), batch_size=batch_size, shuffle=False)
     stress_loader = DataLoader(SquatImageDataset(test_df, stress_tf), batch_size=batch_size, shuffle=False)
 
-    model = build_model(num_classes=2).to(device)
+    model = build_model(num_classes=2, arch=arch).to(device)
     criterion = nn.CrossEntropyLoss()
 
     best_state = None
@@ -197,7 +211,7 @@ def train_transfer_model(labels_csv: str, robust: bool, epochs_head: int, epochs
     bundle = {
         "state_dict": model.state_dict(),
         "class_names": CLASS_NAMES,
-        "arch": "resnet18",
+        "arch": arch.lower(),
     }
 
     return bundle, {"clean": clean_metrics, "stress": stress_metrics}
@@ -212,7 +226,7 @@ def load_torch_model(path: str, device=None):
     if device is None:
         device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     ckpt = torch.load(path, map_location=device)
-    model = build_model(num_classes=len(ckpt["class_names"]))
+    model = build_model(num_classes=len(ckpt["class_names"]), arch=ckpt.get("arch", "resnet18"))
     model.load_state_dict(ckpt["state_dict"])
     model.to(device)
     model.eval()

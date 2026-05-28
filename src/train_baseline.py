@@ -12,6 +12,7 @@ def main() -> None:
     parser.add_argument("--epochs-head", type=int, default=4)
     parser.add_argument("--epochs-ft", type=int, default=0)
     parser.add_argument("--batch-size", type=int, default=16)
+    parser.add_argument("--arch", choices=["resnet18", "resnet50"], default="resnet18")
     args = parser.parse_args()
 
     bundle, metrics = train_transfer_model(
@@ -21,6 +22,7 @@ def main() -> None:
         epochs_ft=args.epochs_ft,
         batch_size=args.batch_size,
         seed=42,
+        arch=args.arch,
     )
 
     save_torch_bundle(args.out, bundle)
