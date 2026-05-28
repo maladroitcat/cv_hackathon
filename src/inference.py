@@ -2,12 +2,11 @@ from dataclasses import dataclass
 from typing import Dict
 
 import cv2
-import joblib
 import numpy as np
-import pandas as pd
 import torch
 from PIL import Image
-from torchvision import models
+
+from src.transfer import build_transforms, load_torch_model
 
 
 @dataclass
@@ -19,24 +18,15 @@ class PredictionResult:
     overlay_bgr: np.ndarray
 
 
-def _embed_image(image_bgr: np.ndarray):
-    rgb = cv2.cvtColor(image_bgr, cv2.COLOR_BGR2RGB)
-    pil = Image.fromarray(rgb)
-    weights = models.ResNet18_Weights.DEFAULT
-    tfm = weights.transforms()
-    base = models.resnet18(weights=weights)
-    enc = torch.nn.Sequential(*list(base.children())[:-1])
-    enc.eval()
-
-    with torch.inference_mode():
-        x = tfm(pil).unsqueeze(0)
-        emb = enc(x).squeeze().numpy()
-    return emb
+_MODEL_CACHE = {}
 
 
 def _feedback(label: str, confidence: float):
     if label == "good_squat":
-        return ["Form looks acceptable in this photo.", "Maintain balance, neutral spine, and controlled depth."]
+        return [
+            "Form looks acceptable in this photo.",
+            "Maintain balance, neutral spine, and controlled depth.",
+        ]
     return [
         "Posture likely needs correction.",
         "Try a deeper squat while keeping chest more upright.",
@@ -45,25 +35,36 @@ def _feedback(label: str, confidence: float):
     ]
 
 
+def _get_model(model_path: str):
+    if model_path not in _MODEL_CACHE:
+        _MODEL_CACHE[model_path] = load_torch_model(model_path)
+    return _MODEL_CACHE[model_path]
+
+
 def predict_image(model_path: str, image_bgr: np.ndarray) -> PredictionResult:
-    bundle = joblib.load(model_path)
-    model = bundle["model"]
-    le = bundle["label_encoder"]
-    fcols = bundle["features"]
+    model, class_names, device = _get_model(model_path)
+    _, eval_tf, _ = build_transforms(robust=False)
 
-    emb = _embed_image(image_bgr)
-    row = {c: float(emb[int(c.split("_")[1])]) for c in fcols}
-    x = pd.DataFrame([row])
+    rgb = cv2.cvtColor(image_bgr, cv2.COLOR_BGR2RGB)
+    pil = Image.fromarray(rgb)
+    x = eval_tf(pil).unsqueeze(0).to(device)
 
-    pred_idx = int(model.predict(x)[0])
-    label = str(le.inverse_transform([pred_idx])[0])
-    if hasattr(model, "predict_proba"):
-        conf = float(np.max(model.predict_proba(x)[0]))
-    else:
-        conf = 0.5
+    with torch.inference_mode():
+        logits = model(x)
+        probs = torch.softmax(logits, dim=1).cpu().numpy()[0]
+
+    pred_idx = int(np.argmax(probs))
+    conf = float(np.max(probs))
+    label = class_names[pred_idx]
 
     overlay = image_bgr.copy()
     cv2.putText(overlay, f"Prediction: {label}", (20, 30), cv2.FONT_HERSHEY_SIMPLEX, 0.8, (50, 220, 50), 2, cv2.LINE_AA)
     cv2.putText(overlay, f"Confidence: {conf:.2f}", (20, 60), cv2.FONT_HERSHEY_SIMPLEX, 0.8, (50, 220, 50), 2, cv2.LINE_AA)
 
-    return PredictionResult(label=label, confidence=conf, feedback=_feedback(label, conf), features={}, overlay_bgr=overlay)
+    return PredictionResult(
+        label=label,
+        confidence=conf,
+        feedback=_feedback(label, conf),
+        features={},
+        overlay_bgr=overlay,
+    )

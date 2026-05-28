@@ -21,7 +21,7 @@ model_choice = st.selectbox(
     help="Choose robust model (augmentation-focused) or baseline model.",
 )
 
-model_path = "models/robust_model.pkl" if model_choice == "robust" else "models/baseline_model.pkl"
+model_path = "models/robust_model.pt" if model_choice == "robust" else "models/baseline_model.pt"
 
 uploaded = st.file_uploader("Upload a squat photo", type=["jpg", "jpeg", "png"])
 

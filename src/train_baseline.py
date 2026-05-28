@@ -1,23 +1,29 @@
 import argparse
 
-import pandas as pd
-
-from common import ensure_parent_dir, save_json
-from modeling import save_bundle, train_and_eval
+from common import save_json
+from transfer import save_torch_bundle, train_transfer_model
 
 
 def main() -> None:
-    parser = argparse.ArgumentParser(description="Train baseline squat classifier")
-    parser.add_argument("--features", required=True)
-    parser.add_argument("--out", required=True)
+    parser = argparse.ArgumentParser(description="Train baseline transfer-learning squat classifier")
+    parser.add_argument("--labels", default="data/labels.csv")
+    parser.add_argument("--out", default="models/baseline_model.pt")
     parser.add_argument("--metrics-out", default="results/metrics_baseline.json")
+    parser.add_argument("--epochs-head", type=int, default=4)
+    parser.add_argument("--epochs-ft", type=int, default=0)
+    parser.add_argument("--batch-size", type=int, default=16)
     args = parser.parse_args()
 
-    df = pd.read_csv(args.features)
-    model, le, metrics, fcols = train_and_eval(df, random_state=42)
+    bundle, metrics = train_transfer_model(
+        labels_csv=args.labels,
+        robust=False,
+        epochs_head=args.epochs_head,
+        epochs_ft=args.epochs_ft,
+        batch_size=args.batch_size,
+        seed=42,
+    )
 
-    ensure_parent_dir(args.out)
-    save_bundle(args.out, model, le, fcols)
+    save_torch_bundle(args.out, bundle)
     save_json(metrics, args.metrics_out)
     print(f"Saved baseline model to {args.out}")
     print(f"Saved metrics to {args.metrics_out}")
