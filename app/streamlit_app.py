@@ -1,6 +1,6 @@
-import cv2
 import numpy as np
 import streamlit as st
+from PIL import Image
 
 import sys
 from pathlib import Path
@@ -26,24 +26,27 @@ model_path = "models/robust_model.pt" if model_choice == "robust" else "models/b
 uploaded = st.file_uploader("Upload a squat photo", type=["jpg", "jpeg", "png"])
 
 if uploaded is not None:
-    data = np.frombuffer(uploaded.read(), dtype=np.uint8)
-    img_bgr = cv2.imdecode(data, cv2.IMREAD_COLOR)
+    try:
+        pil_img = Image.open(uploaded).convert("RGB")
+        img_rgb = np.array(pil_img)
+    except Exception:
+        img_rgb = None
 
-    if img_bgr is None:
+    if img_rgb is None:
         st.error("Could not read image.")
     elif not Path(model_path).exists():
         st.error(f"Model file not found: {model_path}. Train models first.")
     else:
-        result = predict_image(model_path, img_bgr)
+        result = predict_image(model_path, img_rgb)
 
         col1, col2 = st.columns(2)
         with col1:
             st.subheader("Input")
-            st.image(cv2.cvtColor(img_bgr, cv2.COLOR_BGR2RGB), use_container_width=True)
+            st.image(img_rgb, use_container_width=True)
 
         with col2:
             st.subheader("Pose Overlay")
-            st.image(cv2.cvtColor(result.overlay_bgr, cv2.COLOR_BGR2RGB), use_container_width=True)
+            st.image(result.overlay_bgr, use_container_width=True)
 
         st.subheader("Prediction")
         st.write(f"Class: **{result.label}**")

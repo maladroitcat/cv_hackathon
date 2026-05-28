@@ -1,10 +1,9 @@
 from dataclasses import dataclass
 from typing import Dict
 
-import cv2
 import numpy as np
 import torch
-from PIL import Image
+from PIL import Image, ImageDraw
 
 from src.transfer import build_transforms, load_torch_model
 
@@ -41,12 +40,11 @@ def _get_model(model_path: str):
     return _MODEL_CACHE[model_path]
 
 
-def predict_image(model_path: str, image_bgr: np.ndarray) -> PredictionResult:
+def predict_image(model_path: str, image_rgb: np.ndarray) -> PredictionResult:
     model, class_names, device = _get_model(model_path)
     _, eval_tf, _ = build_transforms(robust=False)
 
-    rgb = cv2.cvtColor(image_bgr, cv2.COLOR_BGR2RGB)
-    pil = Image.fromarray(rgb)
+    pil = Image.fromarray(image_rgb)
     x = eval_tf(pil).unsqueeze(0).to(device)
 
     with torch.inference_mode():
@@ -57,9 +55,12 @@ def predict_image(model_path: str, image_bgr: np.ndarray) -> PredictionResult:
     conf = float(np.max(probs))
     label = class_names[pred_idx]
 
-    overlay = image_bgr.copy()
-    cv2.putText(overlay, f"Prediction: {label}", (20, 30), cv2.FONT_HERSHEY_SIMPLEX, 0.8, (50, 220, 50), 2, cv2.LINE_AA)
-    cv2.putText(overlay, f"Confidence: {conf:.2f}", (20, 60), cv2.FONT_HERSHEY_SIMPLEX, 0.8, (50, 220, 50), 2, cv2.LINE_AA)
+    overlay_pil = pil.copy()
+    draw = ImageDraw.Draw(overlay_pil)
+    draw.rectangle((12, 12, 430, 76), fill=(0, 0, 0))
+    draw.text((20, 20), f"Prediction: {label}", fill=(120, 255, 120))
+    draw.text((20, 45), f"Confidence: {conf:.2f}", fill=(120, 255, 120))
+    overlay = np.array(overlay_pil)
 
     return PredictionResult(
         label=label,
